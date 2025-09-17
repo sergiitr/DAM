@@ -1,6 +1,0 @@
-#Número de líneas que se muestran de un fichero
-lineas=10
-#Mensaje de bienvenida
-mensajeBienvenida=Bienvenido al visor de archivos del IES FJB
-#Autor
-autor=Miguel Á. Pamos
