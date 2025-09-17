@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "sergio",
+    "apellido": "trillo",
+    "tlfn": 622481916,
+    "mail": "sergio@gmail.com"
+  },
+  {
+    "nombre": "david",
+    "apellido": "molina",
+    "tlfn": 9878654,
+    "mail": "david@gmail.com"
+  }
+]

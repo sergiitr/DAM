@@ -1,0 +1,75 @@
+Toyota;Corolla;120;1.6
+Toyota;Camry;200;2.5
+Toyota;Rav4;180;2.0
+Honda;Civic;150;1.8
+Honda;Accord;192;2.0
+Honda;CR-V;170;1.5
+Ford;Focus;125;1.5
+Ford;Fusion;175;2.0
+Ford;Escape;168;1.5
+Volkswagen;Golf;130;1.4
+Volkswagen;Passat;174;2.0
+Volkswagen;Tiguan;184;2.0
+Renault;Megane;110;1.2
+Renault;Clio;90;1.0
+Renault;Kadjar;130;1.3
+Nissan;Sentra;140;1.6
+Nissan;Altima;188;2.5
+Nissan;Rogue;170;2.5
+Chevrolet;Cruze;155;1.8
+Chevrolet;Malibu;163;1.5
+Chevrolet;Equinox;170;1.5
+Hyundai;Elantra;128;1.6
+Hyundai;Sonata;180;2.0
+Hyundai;Tucson;161;2.0
+Kia;Forte;120;1.6
+Kia;Optima;178;2.0
+Kia;Sportage;182;2.4
+Mazda;Mazda3;150;2.0
+Mazda;Mazda6;187;2.5
+Mazda;CX-5;187;2.5
+Subaru;Impreza;152;2.0
+Subaru;Outback;182;2.5
+Subaru;Forester;182;2.5
+Audi;A3;170;1.8
+Audi;A4;190;2.0
+Audi;Q5;252;2.0
+BMW;Serie 3;190;2.0
+BMW;Serie 5;248;2.0
+BMW;X3;248;2.0
+Mercedes-Benz;Clase A;150;1.6
+Mercedes-Benz;Clase C;194;2.0
+Mercedes-Benz;GLC;241;2.0
+Fiat;Tipo;95;1.4
+Fiat;500X;120;1.6
+Fiat;Panda;69;1.2
+Peugeot;308;120;1.6
+Peugeot;3008;130;1.2
+Peugeot;5008;130;1.2
+Citroën;C4;110;1.2
+Citroën;C5;130;1.5
+Citroën;C3;83;1.2
+Opel;Astra;130;1.4
+Opel;Insignia;200;2.0
+Opel;Crossland X;110;1.2
+Seat;León;125;1.4
+Seat;Ibiza;95;1.0
+Seat;Ateca;115;1.0
+Mini;Cooper;136;1.5
+Mini;Countryman;136;1.5
+Mini;Clubman;192;2.0
+Volvo;S60;190;2.0
+Volvo;V60;250;2.0
+Volvo;XC60;254;2.0
+Lexus;IS;180;2.0
+Lexus;RX;308;3.5
+Lexus;NX;194;2.0
+Jaguar;XE;200;2.0
+Jaguar;XF;250;2.0
+Jaguar;F-Pace;247;2.0
+Land Rover;Range Rover Evoque;150;2.0
+Land Rover;Discovery Sport;180;2.0
+Land Rover;Range Rover Sport;340;3.0
+Porsche;911;350;3.0
+Porsche;Panamera;330;3.0
+Porsche;Macan;248;2.0
