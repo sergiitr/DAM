@@ -1,0 +1,25 @@
+Marca: Toyota, Cilindrada media: 190.0, Potencia media: 2.0
+Marca: Honda, Cilindrada media: 170.66666666666666, Potencia media: 1.0
+Marca: Ford, Cilindrada media: 156.0, Potencia media: 1.0
+Marca: Volkswagen, Cilindrada media: 162.66666666666666, Potencia media: 1.0
+Marca: Renault, Cilindrada media: 110.0, Potencia media: 1.0
+Marca: Nissan, Cilindrada media: 166.0, Potencia media: 2.0
+Marca: Chevrolet, Cilindrada media: 162.66666666666666, Potencia media: 1.0
+Marca: Hyundai, Cilindrada media: 156.33333333333334, Potencia media: 1.0
+Marca: Kia, Cilindrada media: 160.0, Potencia media: 2.0
+Marca: Mazda, Cilindrada media: 174.66666666666666, Potencia media: 2.0
+Marca: Subaru, Cilindrada media: 172.0, Potencia media: 2.0
+Marca: Audi, Cilindrada media: 204.0, Potencia media: 1.0
+Marca: BMW, Cilindrada media: 228.66666666666666, Potencia media: 2.0
+Marca: Mercedes-Benz, Cilindrada media: 195.0, Potencia media: 1.0
+Marca: Fiat, Cilindrada media: 94.66666666666667, Potencia media: 1.0
+Marca: Peugeot, Cilindrada media: 126.66666666666667, Potencia media: 1.0
+Marca: Citroën, Cilindrada media: 107.66666666666667, Potencia media: 1.0
+Marca: Opel, Cilindrada media: 146.66666666666666, Potencia media: 1.0
+Marca: Seat, Cilindrada media: 111.66666666666667, Potencia media: 1.0
+Marca: Mini, Cilindrada media: 154.66666666666666, Potencia media: 1.0
+Marca: Volvo, Cilindrada media: 231.33333333333334, Potencia media: 2.0
+Marca: Lexus, Cilindrada media: 227.33333333333334, Potencia media: 2.0
+Marca: Jaguar, Cilindrada media: 232.33333333333334, Potencia media: 2.0
+Marca: Land Rover, Cilindrada media: 223.33333333333334, Potencia media: 2.0
+Marca: Porsche, Cilindrada media: 309.3333333333333, Potencia media: 2.0
