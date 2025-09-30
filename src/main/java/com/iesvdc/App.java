@@ -1,63 +1,36 @@
 package com.iesvdc;
 
-import java.text.Normalizer;
-import java.util.Arrays;
-
 /**
- * Hello world!
+ * @author Sergio Trillo Rodriguez 
  *
  */
-public class App 
-{
+public class App {
     public static final int CARAS = 6;
     public static int[] numeros= new int[CARAS];
-    public static void main( String[] args )
-    {
-        System.out.println( "Generando persona" );
-        Persona p = new Persona(
-            "Pepe", 
-            "García",
-            "pepe@sincorreo.com", 
-            "12345", 
-            Genero.OTRO);
-        System.out.println(p.toString());
 
+    public static void main( String[] args ) {
         System.out.println("Cargando datos de personas");
         ListaPersonas lp = new ListaPersonas();
-        lp.loadData(
-            "datos/nombre_mujeres.txt",
-            "datos/nombre_hombres.txt",
-            "datos/apellidos.txt",
-            "datos/all_email.txt");
-        lp.generaPersonas(1000000);
-        for (Persona persona : lp.getPersonas()) {
-            System.out.println("Persona: "+p.toString());
-        }
-        
-        Arrays.fill(numeros, 0);
-        
-        /*for (int i=0; i<CARAS; i++) {
-            numeros[i] = 0;
-        }*/
-        for (int i = 0; i < 1000; i++) {
-            numeros[lp.dado(CARAS)]++;
-        }
-        for (int i=0; i<CARAS; i++) {
-            System.out.printf(
-                "Han salido %d números del número %d\n",
-                numeros[i],
-                i
-            );
-        }
+        lp.loadData( "datos/nombre_mujeres.txt", "datos/nombre_hombres.txt", "datos/apellidos.txt", "datos/all_email.txt" );
+        lp.generaPersonas(100); // generamos 100 pero mostraremos solo 10
 
-        /*
-        String cadena = "Canción alegría Barça";
-        // cadena = cadena.replaceAll("[ç]", "c");
-        cadena = Normalizer.normalize(cadena, Normalizer.Form.NFD);
-        // cadena = "Canci´on alegr´ia Barcça";
-        cadena = cadena.replaceAll("[^\\p{ASCII}]", "");
-        
-        System.out.println(cadena);
-        */
+        System.out.println("[");
+        int total = Math.min(10, lp.getPersonas().size());
+        for (int i = 0; i < total; i++) {
+            Persona persona = lp.getPersonas().get(i);
+            System.out.print("  {");
+            System.out.print("\"nombre\":\"" + persona.getNombre() + "\",");
+            System.out.print("\"apellidos\":\"" + persona.getApellidos() + "\",");
+            System.out.print("\"dni\":\"" + persona.getDni() + "\",");
+            System.out.print("\"email\":\"" + persona.getEmail() + "\",");
+            System.out.print("\"telefono\":\"" + persona.getTelefono() + "\",");
+            System.out.print("\"genero\":\"" + persona.getGenero() + "\",");
+            System.out.print("\"fechaNacimiento\":\"" + persona.getFechaNacimiento() + "\"");
+            System.out.print("}");
+            if (i < total - 1) 
+                System.out.println(",");
+        }
+        System.out.println("\n]");
+
     }
 }

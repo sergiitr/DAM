@@ -1,7 +1,6 @@
 package com.iesvdc;
 
 import java.util.regex.Pattern;
-import java.util.Objects;
 
 /**
  * 
@@ -25,41 +24,28 @@ public class Persona {
     private String email;
     private String telefono;
     private Genero genero;
+    private String dni;
+    private String fechaNacimiento;
+
+
+    private final Pattern PATRON_EMAIL = Pattern.compile( "^[A-Za-z0-9+_.-]" + "+@[A-Za-z0-9-]" + "+\\.[A-Za-z]{2,}$" );
+    private final Pattern PATRON_TELEFONO = Pattern.compile("^[+]?[0-9]{5,12}$");
     
-    private final Pattern PATRON_EMAIL = 
-        Pattern.compile(
-            "^[A-Za-z0-9+_.-]" +
-            "+@[A-Za-z0-9-]" +
-            "+\\.[A-Za-z]{2,}$");
+    public Persona() { }
 
-    private final Pattern PATRON_TELEFONO =
-        Pattern.compile("^[+]?[0-9]{5,12}$");
+    public Persona( String nombre, String apellidos, String email, String telefono, Genero genero) {
+        if (!PATRON_EMAIL.matcher(email).matches())
+            throw new IllegalArgumentException( "Formato de email incorrecto: " + email );
+
+        if (!PATRON_TELEFONO.matcher(telefono).matches())
+            throw new IllegalArgumentException("Formato de teléfono incorrecto: "+ telefono);
         
-
-    public Persona() {
-    }
-
-    public Persona(
-        String nombre, String apellidos, 
-        String email, String telefono, Genero genero) {
-
-        if (!PATRON_EMAIL.matcher(email).matches()){
-            throw new IllegalArgumentException(
-                "Formato de email incorrecto: " + email
-            );
-        }
-
-         if (!PATRON_TELEFONO.matcher(telefono).matches()){
-            throw new IllegalArgumentException(
-                "Formato de teléfono incorrecto: "+ telefono);
-        }
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
         this.genero = genero;
     }
-
 
     public String getNombre() {
         return this.nombre;
@@ -101,17 +87,13 @@ public class Persona {
         this.genero = genero;
     }
     
+    public String getDni() { return dni; }
+    public void setDni(String dni) { this.dni = dni; }
 
-
+    public String getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
     @Override
     public String toString() {
-        return "{" +
-            " nombre='" + getNombre() + "'" +
-            ", apellidos='" + getApellidos() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", telefono='" + getTelefono() + "'" +
-            ", genero='" + getGenero() + "'" +
-            "}";
+        return "{ nombre='" + getNombre() + "', apellidos='" + getApellidos() + "', email='" + getEmail() + "', telefono='" + getTelefono() + "', genero='" + getGenero() + "'}";
     }
-
 }
