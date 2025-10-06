@@ -2,60 +2,42 @@
  * @author Sergio Trillo Rodriguez
  */
 import java.util.regex.*;
-
 public class RealizaOperacion {
     public static void main(String[] args) {
-        boolean parametrosCorrectos = true;
-        boolean divisionPorCero = false;
-        int resultado = 0;
-
-        if (args.length != 1)
-            parametrosCorrectos = false;
+        if (args.length == 0)
+            System.out.println("Error en los parámetros");
         else {
-            String operacion = args[0].trim();
-            // Expresión regular: operador (+,-,*,:) seguido de dos enteros separados por espacios
-            String regex = "([+\\-\\*:])\\s+(-?\\d+)\\s+(-?\\d+)";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(operacion);
+            // La operación viene como un solo String (ej: "( + 3 5 )")
+            String operacion = String.join(" ", args).trim();
+            // Expresión regular -> ( operador entero entero )
+            Pattern p = Pattern.compile("^\\(\\s*([+\\-*:])\\s*(-?\\d+)\\s*(-?\\d+)\\s*\\)$");
+            Matcher m = p.matcher(operacion);
 
-            if (!matcher.matches())
-                parametrosCorrectos = false;
+            if (!m.matches())
+                System.out.println("Error en los parámetros");
             else {
-                String operador = matcher.group(1);
-                int num1 = Integer.parseInt(matcher.group(2));
-                int num2 = Integer.parseInt(matcher.group(3));
+                try {
+                    String operador = m.group(1);
+                    int a = Integer.parseInt(m.group(2));
+                    int b = Integer.parseInt(m.group(3));
 
-                switch (operador) {
-                    case "+":
-                        resultado = num1 + num2;
-                        break;
-                    case "-":
-                        resultado = num1 - num2;
-                        break;
-                    case "*":
-                        resultado = num1 * num2;
-                        break;
-                    case ":":
-                        if (num2 == 0) {
-                            divisionPorCero = true;  // marcamos división por cero
-                            parametrosCorrectos = false;
-                        } else {
-                            resultado = num1 / num2;
-                        }
-                        break;
-                    default:
-                        parametrosCorrectos = false;
-                        break;
+                    if (operador.equals("+"))
+                        System.out.println("Resultado: " + (a + b));
+                    else if (operador.equals("-"))
+                        System.out.println("Resultado: " + (a - b));
+                    else if (operador.equals("*"))
+                        System.out.println("Resultado: " + (a * b));
+                    else if (operador.equals(":")) {
+                        if (b == 0)
+                            System.out.println("Error: división por cero");
+                        else
+                            System.out.println("Resultado: " + (a / b));
+                    } else
+                        System.out.println("Error en los parámetros");
+                } catch (Exception e) {
+                    System.out.println("Error en los parámetros");
                 }
             }
-        }
-
-        if (divisionPorCero) {
-            System.out.println("Error: División por cero");
-        } else if (parametrosCorrectos) {
-            System.out.println(resultado);
-        } else {
-            System.out.println("Error en los parámetros");
         }
     }
 }
