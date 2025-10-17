@@ -26,7 +26,7 @@ El objetivo es practicar **tres formas diferentes de manejar eventos de botones*
 
 ## Estructura del proyecto
 
-`` 
+```bash
 Actividad7/
 ├─ app/
 │ ├─ src/
@@ -37,7 +37,7 @@ Actividad7/
 │ │ └─ AndroidManifest.xml
 └─ build.gradle
 
-``
+```
 
 - `MainActivity.kt` → Contiene la lógica de los botones y la gestión de eventos.  
 - `activity_main.xml` → Layout con los tres botones y el TextView.  
