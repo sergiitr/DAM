@@ -1,3 +1,8 @@
+/**
+ * @author Sergio Trillo Rodriguez
+ * @description Ejercicios Arrays
+ */
+
 // a - Crea un array “datos” vacío con un literal
 let datos = new Array();
 
