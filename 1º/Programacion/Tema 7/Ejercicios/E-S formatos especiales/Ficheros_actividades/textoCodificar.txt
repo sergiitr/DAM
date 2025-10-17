@@ -1,2 +1,0 @@
-Manejo de errores: Asegúrate de manejar adecuadamente cualquier excepción o error que pueda surgir durante la lectura del
-fichero binario para garantizar un comportamiento robusto y evitar problemas inesperados.

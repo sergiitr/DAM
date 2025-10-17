@@ -1,0 +1,11 @@
+Informe de menciones en El Quijote
+
+Quijote, protagonista de la novela aparece 815 veces.
+Sancho, el fiel escudero aparece 662 veces.
+Cardenio, personaje al que Don Quijote y Sancho Panza se encontraron cuando iban por un bosque de Sierra Morena aparece 104 veces.
+Dulcinea, la dama de quien está enamorado el protagonista Don Quijote aparece 90 veces.
+Rucio, el burro de Sancho Panza aparece 17 veces.
+Rocinante, el caballo de Don Quijote aparece 120 veces.
+Fierabrás, según Don Quijote, poción mágica capaz de curar todas las dolencias del cuerpo humano aparece 0 veces.
+Barataria, ínsula de la que fue gobernador Sancho Panza aparece 0 veces.
+Hamete, supuesto historiador musulmán aparece 5 veces.
