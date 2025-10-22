@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.actividadevaluable1">
+
+    <!-- Permiso para llamadas telefónicas -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- Permiso para mantener el dispositivo despierto durante la alarma -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+
+    <application
+        android:allowBackup="true"
+        android:label="ActividadEvaluable1"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Activity de inicio -->
+        <activity
+            android:name=".ConfigActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Otras Activities -->
+        <activity android:name=".MainActivity" />
+        <activity android:name=".CallActivity" />
+        <activity android:name=".AlarmActivity" />
+
+        <receiver android:name=".AlarmReceiver" />
+
+        <!-- BroadcastReceiver para la alarma -->
+
+    </application>
+</manifest>

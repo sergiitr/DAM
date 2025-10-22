@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ActividadEvaluable1</string>
+    <string name="call">Llamar por teléfono</string>
+    <string name="open_url">Abrir sitio web</string>
+    <string name="set_alarm">Configurar alarma</string>
+    <string name="open_email">Abrir correo electrónico</string>
+</resources>

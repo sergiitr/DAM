@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFEBEE">
+
+    <!-- Texto centrado -->
+    <TextView
+        android:id="@+id/tvIdent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IDENTIFICADOR"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:layout_centerInParent="true" />
+
+    <!-- Contenedor de botones en la parte inferior -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:dividerPadding="8dp">
+
+        <!-- Botón de llamada -->
+        <ImageButton
+            android:id="@+id/btnCallActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_baseline_call_24"
+            android:contentDescription="@string/call"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:padding="16dp" />
+
+        <!-- Botón URL / planeta -->
+        <ImageButton
+            android:id="@+id/btnUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_baseline_public_24"
+            android:contentDescription="@string/open_url"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:padding="16dp" />
+
+        <!-- Botón alarma -->
+        <ImageButton
+            android:id="@+id/btnAlarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_baseline_alarm_24"
+            android:contentDescription="@string/set_alarm"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:padding="16dp" />
+
+
+        <!-- Botón correo -->
+        <ImageButton
+            android:id="@+id/btnEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_baseline_email_24"
+            android:contentDescription="@string/open_email"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:padding="16dp" />
+
+        <!-- Botón configuración -->
+        <Button
+            android:id="@+id/btnConfig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Volver a configuración" />
+    </LinearLayout>
+
+</RelativeLayout>
