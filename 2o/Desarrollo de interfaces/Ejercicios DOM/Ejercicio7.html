@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Ejercicio contar vocales y consonastes</h1>
+        <input type="text" name="" id="palabras"> </input>
+    </body>
+
+    <script>
+        function contarCaracteres(palabras) {
+            let minuscula = palabras.toLowerCase();
+            let vocales=0;
+            let consotantes=0;
+            for (let i=0; i<minuscula.length; i++) {
+                if (minuscula.charAt(i)=="a" || minuscula.charAt(i)=="e" || minuscula.charAt(i)=="i" || minuscula.charAt(i)=="o" || minuscula.charAt(i)=="u")
+                    vocales++;
+            }
+        }
+
+        document.getElementById("palabras").addEventListener('change', () => {
+            let palabras = document.getElementById('palabras').value;
+            contarCaracteres()
+        });
+    </script>
+</html>
