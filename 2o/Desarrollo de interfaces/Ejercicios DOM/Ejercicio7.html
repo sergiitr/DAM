@@ -19,11 +19,13 @@
                 if (minuscula.charAt(i)=="a" || minuscula.charAt(i)=="e" || minuscula.charAt(i)=="i" || minuscula.charAt(i)=="o" || minuscula.charAt(i)=="u")
                     vocales++;
             }
+            let aaa = document.getElementById('palbras');
+            aaa.innerHTML += `Hay ${vocales} vocales`
         }
 
         document.getElementById("palabras").addEventListener('change', () => {
             let palabras = document.getElementById('palabras').value;
-            contarCaracteres()
+            contarCaracteres();
         });
     </script>
 </html>
