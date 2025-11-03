@@ -1,15 +1,19 @@
+/**
+ * @author Sergio Trillo Rodriguez
+ */
+
 package com.example.actividadevaluable1
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,37 +21,33 @@ class MainActivity : AppCompatActivity() {
         val tvIdent = findViewById<TextView>(R.id.tvIdent)
         val btnCallActivity = findViewById<ImageButton>(R.id.btnCallActivity)
         val btnUrl = findViewById<ImageButton>(R.id.btnUrl)
-        val btnAlarm = findViewById<ImageButton>(R.id.btnAlarm)
+        val btnAlarm = findViewById<ImageButton>(R.id.btnSetAlarm)
         val btnEmail = findViewById<ImageButton>(R.id.btnEmail)
         val btnConfig = findViewById<Button>(R.id.btnConfig)
 
-        // Recuperar SharedPreferences
+        // Recuperar datos del usuario
         val prefs = getSharedPreferences("app_config", MODE_PRIVATE)
+        val nombre = prefs.getString("nombre", "Usuario")
+        val telefono = prefs.getString("telefono", "N/A")
 
-        // Obtener datos del Intent o SharedPreferences
-        val nombre = intent.getStringExtra("usuario_nombre") ?: prefs.getString("nombre", "Usuario")
-        val telefono = intent.getStringExtra("usuario_telefono") ?: prefs.getString("telefono", "N/A")
-
-        // Mostrar en el TextView
         tvIdent.text = "Bienvenido, $nombre\nTeléfono: $telefono"
 
-        // --- BOTÓN LLAMADA ---
+        // Botón de llamada
         btnCallActivity.setOnClickListener {
-            // Llamada con número dinámico
-            val callIntent = Intent(Intent.ACTION_DIAL).apply {
-                data = Uri.parse("tel:$telefono")
+            val intent = Intent(this, CallActivity::class.java).apply {
+                putExtra("usuario_telefono", telefono)
             }
-            startActivity(callIntent)
+            startActivity(intent)
         }
 
-        // --- BOTÓN WEB ---
+        // Botón web
         btnUrl.setOnClickListener {
             val url = "https://www.iesvirgendelcarmen.com/"
             val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(webIntent)
         }
 
-        // --- BOTÓN CORREO ---
+        // Botón correo
         btnEmail.setOnClickListener {
             val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")
@@ -58,18 +58,24 @@ class MainActivity : AppCompatActivity() {
             startActivity(emailIntent)
         }
 
-        // --- BOTÓN CONFIGURACIÓN ---
+        //  Botón alarma
+        btnAlarm.setOnClickListener {
+            programarAlarma()
+        }
+
+        // Botón configuración
         btnConfig.setOnClickListener {
             val intentConfig = Intent(this, ConfigActivity::class.java)
             startActivity(intentConfig)
-            finish() // opcional: cerrar MainActivity para que se recargue al volver
+            finish()
         }
+    }
 
-        // --- BOTÓN ALARMA ---
-        btnAlarm.setOnClickListener {
-            val alarmIntent = Intent(this, AlarmActivity::class.java)
-            startActivity(alarmIntent)
-        }
-
+    private fun programarAlarma() {
+        Toast.makeText(this, "La alarma sonará en 15 segundos", Toast.LENGTH_SHORT).show()
+        android.os.Handler(mainLooper).postDelayed({
+            val intent = Intent(this, AlarmActivity::class.java)
+            startActivity(intent)
+        }, 15_000) // 15000 ms = 15 segundos, para 2 minutos poner 120000 ms
     }
 }

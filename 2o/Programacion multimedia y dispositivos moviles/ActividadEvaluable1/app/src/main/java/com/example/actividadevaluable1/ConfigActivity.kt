@@ -1,3 +1,6 @@
+/**
+ * @author Sergio Trillo Rodriguez
+ */
 package com.example.actividadevaluable1
 
 import android.content.Intent
@@ -5,8 +8,19 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
+/**
+ * ConfigActivity
+ * Permite al usuario ingresar y guardar su nombre y teléfono.
+ * Funcionalidades:
+ * - Muestra los datos guardados previamente en SharedPreferences.
+ * - Valida los datos:
+ *      - Nombre no vacío.
+ *      - Teléfono solo números y 9 dígitos.
+ * - Guarda los datos en SharedPreferences.
+ * - Redirige a MainActivity enviando los datos actualizados.
+ */
 
 class ConfigActivity : AppCompatActivity() {
     private lateinit var prefs: SharedPreferences
@@ -16,52 +30,46 @@ class ConfigActivity : AppCompatActivity() {
         setContentView(R.layout.activity_config)
 
         prefs = getSharedPreferences("app_config", MODE_PRIVATE)
-        val etName = findViewById<EditText>(R.id.etName)
-        val etPhone = findViewById<EditText>(R.id.etPhone)
-        val btnSave = findViewById<Button>(R.id.btnSave)
+        val etNombre = findViewById<EditText>(R.id.etName)
+        val etTlfn = findViewById<EditText>(R.id.etPhone)
+        val botonGuardar = findViewById<Button>(R.id.btnSave)
 
-        // Mostrar datos guardados si existen
-        etName.setText(prefs.getString("nombre", ""))
-        etPhone.setText(prefs.getString("telefono", ""))
+        etNombre.setText(prefs.getString("nombre", ""))
+        etTlfn.setText(prefs.getString("telefono", ""))
 
-        btnSave.setOnClickListener {
-            val name = etName.text.toString().trim()
-            val phone = etPhone.text.toString().trim()
+        botonGuardar.setOnClickListener {
+            val nombre = etNombre.text.toString().trim()
+            val tlfn = etTlfn.text.toString().trim()
 
-            // Validaciones
-            if (name.isEmpty()) {
-                etName.error = "Por favor, ingresa tu nombre"
-                etName.requestFocus()
+            if (nombre.isEmpty()) {
+                etNombre.error = "Por favor, ingresa tu nombre"
+                etNombre.requestFocus()
                 return@setOnClickListener
             }
 
-            if (phone.isEmpty()) {
-                etPhone.error = "Por favor, ingresa tu teléfono"
-                etPhone.requestFocus()
+            if (tlfn.isEmpty()) {
+                etTlfn.error = "Por favor, ingresa tu teléfono"
+                etTlfn.requestFocus()
                 return@setOnClickListener
             }
 
-            // Verificar que solo tenga números
-            if (!phone.matches(Regex("\\d+"))) {
-                etPhone.error = "El teléfono solo debe contener números"
-                etPhone.requestFocus()
+            if (!tlfn.matches(Regex("\\d+"))) {
+                etTlfn.error = "El teléfono solo debe contener números"
+                etTlfn.requestFocus()
                 return@setOnClickListener
             }
 
-            // Verificar que tenga 9 dígitos
-            if (phone.length != 9) {
-                etPhone.error = "El teléfono debe tener 9 dígitos"
-                etPhone.requestFocus()
+            if (tlfn.length != 9) {
+                etTlfn.error = "El teléfono debe tener 9 dígitos"
+                etTlfn.requestFocus()
                 return@setOnClickListener
             }
 
-            // Guardar datos en SharedPreferences
-            prefs.edit().putString("nombre", name).putString("telefono", phone).apply()
+            prefs.edit().putString("nombre", nombre).putString("telefono", tlfn).apply()
 
-            // Pasar datos a MainActivity
             val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("usuario_nombre", name)
-            intent.putExtra("usuario_telefono", phone)
+            intent.putExtra("usuario_nombre", nombre)
+            intent.putExtra("usuario_telefono", tlfn)
             startActivity(intent)
             finish()
         }

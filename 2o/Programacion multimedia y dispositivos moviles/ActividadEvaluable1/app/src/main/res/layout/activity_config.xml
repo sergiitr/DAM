@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#000000">
 
+    <!-- Título -->
     <TextView
         android:text="Configuración inicial"
-        android:textSize="20sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
 
     <!-- Campo para el nombre -->
     <EditText
@@ -17,7 +23,11 @@
         android:hint="Tu nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName" />
+        android:layout_marginBottom="12dp"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:backgroundTint="#FFFFFF" />
 
     <!-- Campo para el teléfono -->
     <EditText
@@ -25,14 +35,23 @@
         android:hint="Tu número de teléfono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:inputType="phone"
-        android:maxLength="9" />
+        android:maxLength="9"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:backgroundTint="#FFFFFF" />
 
+    <!-- Botón Guardar -->
     <Button
         android:id="@+id/btnSave"
         android:text="Guardar y abrir app"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        android:backgroundTint="#FF0000"
+        android:textColor="#FFFFFF"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:layout_gravity="center" />
 
 </LinearLayout>

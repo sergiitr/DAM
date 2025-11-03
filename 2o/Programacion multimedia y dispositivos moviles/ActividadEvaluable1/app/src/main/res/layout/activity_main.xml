@@ -6,6 +6,17 @@
     android:padding="16dp"
     android:background="#FFEBEE">
 
+    <ImageView
+        android:id="@+id/imgFoto"
+        android:layout_width="200dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/altoke"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true" />
+
     <!-- Texto centrado -->
     <TextView
         android:id="@+id/tvIdent"
@@ -17,74 +28,93 @@
         android:textSize="28sp"
         android:layout_centerInParent="true" />
 
-    <!-- Contenedor de botones en la parte inferior -->
+    <!-- Contenedor principal de botones -->
     <LinearLayout
         android:id="@+id/buttonContainer"
-        android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center"
-        android:paddingBottom="16dp"
-        android:layout_marginTop="16dp"
-        android:dividerPadding="8dp">
+        android:layout_marginBottom="16dp">
 
-        <!-- Botón de llamada -->
-        <ImageButton
-            android:id="@+id/btnCallActivity"
+        <!-- Fila 1: llamada + URL -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_baseline_call_24"
-            android:contentDescription="@string/call"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerInside"
-            android:padding="16dp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
 
-        <!-- Botón URL / planeta -->
-        <ImageButton
-            android:id="@+id/btnUrl"
+            <ImageButton
+                android:id="@+id/btnCallActivity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_baseline_call_24"
+                android:contentDescription="@string/call"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:padding="16dp" />
+
+            <ImageButton
+                android:id="@+id/btnUrl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_baseline_public_24"
+                android:contentDescription="@string/open_url"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:padding="16dp" />
+        </LinearLayout>
+
+        <!-- Fila 2: alarma + correo -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_baseline_public_24"
-            android:contentDescription="@string/open_url"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerInside"
-            android:padding="16dp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
 
-        <!-- Botón alarma -->
-        <ImageButton
-            android:id="@+id/btnAlarm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_baseline_alarm_24"
-            android:contentDescription="@string/set_alarm"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerInside"
-            android:padding="16dp" />
+            <ImageButton
+                android:id="@+id/btnSetAlarm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_baseline_alarm_24"
+                android:contentDescription="@string/set_alarm"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:padding="16dp" />
 
+            <ImageButton
+                android:id="@+id/btnEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_baseline_email_24"
+                android:contentDescription="@string/open_email"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:padding="16dp" />
+        </LinearLayout>
 
-        <!-- Botón correo -->
-        <ImageButton
-            android:id="@+id/btnEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_baseline_email_24"
-            android:contentDescription="@string/open_email"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerInside"
-            android:padding="16dp" />
-
-        <!-- Botón configuración -->
+        <!-- Fila 3: botón de configuración centrado -->
         <Button
             android:id="@+id/btnConfig"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Volver a configuración" />
+            android:layout_marginTop="24dp"
+            android:text="Volver a configuración"
+            android:backgroundTint="#6200EE"
+            android:textColor="#FFFFFF"
+            android:paddingHorizontal="32dp"
+            android:paddingVertical="12dp" />
     </LinearLayout>
 
 </RelativeLayout>

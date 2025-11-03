@@ -1,3 +1,7 @@
+/**
+ * @author Sergio Trillo Rodriguez
+ */
+
 package com.example.actividadevaluable1
 
 import android.Manifest
@@ -5,18 +9,27 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
+/**
+ * CallActivity
+ * Permite realizar llamadas telefónicas a un número configurado por el usuario.
+ * Funcionalidades:
+ * - Obtiene el teléfono desde el Intent o SharedPreferences.
+ * - Verifica permisos de llamada en tiempo de ejecución.
+ * - Si se concede el permiso, realiza la llamada directa.
+ * - Si no, abre el marcador con el número.
+ */
+
 class CallActivity : AppCompatActivity() {
     private val REQ_CALL = 100
     private var telefonoUri: String = ""
-
     private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,22 +41,18 @@ class CallActivity : AppCompatActivity() {
         val tv = findViewById<TextView>(R.id.tvCallTitle)
         val btnCall = findViewById<ImageButton>(R.id.btnDoCall)
 
-        // Primero intentar obtener teléfono del Intent
+        // Obtener teléfono desde Intent o SharedPreferences
         val telefonoIntent = intent.getStringExtra("usuario_telefono")
-        telefonoUri = if (!telefonoIntent.isNullOrEmpty()) {
+        telefonoUri = if (!telefonoIntent.isNullOrEmpty())
             "tel:$telefonoIntent"
-        } else {
-            // Si no hay en Intent, usar SharedPreferences
+        else {
             val telefonoGuardado = prefs.getString("telefono", "")
-            if (!telefonoGuardado.isNullOrEmpty()) {
+            if (!telefonoGuardado.isNullOrEmpty())
                 "tel:$telefonoGuardado"
-            } else {
-                // Número por defecto
+            else
                 "tel:+34123456789"
-            }
         }
 
-        // Actualizar TextView con número
         tv.text = "Llamar a: ${telefonoUri.removePrefix("tel:")}"
 
         btnCall.setOnClickListener {
@@ -51,35 +60,51 @@ class CallActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Intenta realizar una llamada telefónica al número configurado en [telefonoUri].
+     *
+     * Funcionalidad:
+     * 1. Comprueba si el permiso CALL_PHONE ha sido concedido.
+     *    - Si sí, inicia una llamada directa usando `Intent.ACTION_CALL`.
+     *    - Si no, verifica si se debe mostrar una explicación al usuario mediante
+     *      `shouldShowRequestPermissionRationale`. Si es necesario, muestra un Toast.
+     * 2. Solicita el permiso CALL_PHONE al usuario en tiempo de ejecución.
+     */
     private fun hacerLlamada() {
-        val callIntent = Intent(Intent.ACTION_CALL, Uri.parse(telefonoUri))
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
-                != PackageManager.PERMISSION_GRANTED) {
-
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(Manifest.permission.CALL_PHONE),
-                    REQ_CALL
-                )
-                return
-            }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            startActivity(Intent(Intent.ACTION_CALL, Uri.parse(telefonoUri)))
+            return
         }
 
-        startActivity(callIntent)
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE))
+            Toast.makeText(this, "La app necesita permiso para realizar llamadas.", Toast.LENGTH_LONG).show()
+
+
+        ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.CALL_PHONE),REQ_CALL)
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    /**
+     * Maneja la respuesta del usuario tras solicitar permisos en tiempo de ejecución.
+     *
+     * @param requestCode Código de solicitud enviado al solicitar el permiso.
+     * @param permissions Array de permisos solicitados.
+     * @param grantResults Array con los resultados de los permisos solicitados.
+     *
+     * Funcionalidad:
+     * 1. Comprueba si el código de solicitud corresponde a [REQ_CALL].
+     * 2. Si el permiso CALL_PHONE fue concedido:
+     *    - Inicia una llamada directa al número [telefonoUri].
+     * 3. Si el permiso fue denegado:
+     *    - Muestra un Toast indicando que se abrirá el marcador.
+     *    - Abre el marcador con `Intent.ACTION_DIAL` y el número [telefonoUri].
+     */
+    override fun onRequestPermissionsResult( requestCode: Int, permissions: Array<out String>, grantResults: IntArray ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQ_CALL) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 startActivity(Intent(Intent.ACTION_CALL, Uri.parse(telefonoUri)))
-            } else {
+            else {
+                Toast.makeText(this, "Permiso denegado. Se abrirá el marcador", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(telefonoUri)))
             }
         }
