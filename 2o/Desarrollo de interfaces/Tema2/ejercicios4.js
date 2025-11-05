@@ -1,3 +1,6 @@
+/**
+ * @author Sergio Trillo Rodriguez
+ */
 // 1. Crea una función que cuente el número de vocales de una cadena de caracteres.
 function contarVocales(cadena) {
     let contador = 0;
@@ -76,7 +79,6 @@ function tieneDuplicados(array) {
         for (let j = i + 1; j < array.length; j++)
             if (array[i] === array[j]) 
                 return true;
-
     return false;
 }
 
@@ -87,13 +89,11 @@ function repetidoNVeces(array, n) {
         if (contador[elemento]) {
             contador[elemento]++;
         } else 
-            contador[elemento] = 1;
-        
+            contador[elemento] = 1;  
     }
     for (let clave in contador) 
         if (contador[clave] === n)
             return true;
-
     return false;
 }
 
@@ -120,7 +120,6 @@ function eliminarCaracteres(cadena, caracteres) {
     for (let letra of cadena) 
         if (!caracteres.includes(letra)) 
             resultado += letra;
-
     return resultado;
 }
 
@@ -130,9 +129,8 @@ function rotarMatriz90Grados(matriz) {
     let n = matriz.length;
     for (let i = 0; i < n; i++) {
         nueva.push([]);
-        for (let j = 0; j < n; j++) {
+        for (let j = 0; j < n; j++)
             nueva[i][j] = matriz[n - j - 1][i];
-        }
     }
     return nueva;
 }
@@ -170,7 +168,8 @@ function encontrarSubmatriz(matriz, submatriz) {
                 }
                 if (!encontrada) break;
             }
-            if (encontrada) return { fila: i, columna: j };
+            if (encontrada)
+                return { fila: i, columna: j };
         }
     }
     return null;
@@ -189,7 +188,6 @@ function esSudokuValido(tablero) {
         let columna = [];
         for (let j = 0; j < 9; j++)
             columna.push(tablero[j][i]);
-        
         if (!grupoValido(columna)) return false;
     }
 
@@ -199,8 +197,8 @@ function esSudokuValido(tablero) {
             for (let x = 0; x < 3; x++) 
                 for (let y = 0; y < 3; y++) 
                     subcuadro.push(tablero[i + x][j + y]);
-
-            if (!grupoValido(subcuadro)) return false;
+            if (!grupoValido(subcuadro))
+                return false;
         }
     }
     return true;
