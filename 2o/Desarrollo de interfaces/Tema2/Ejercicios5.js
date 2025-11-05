@@ -12,7 +12,6 @@ function calcularMedia(array) {
     let suma = 0;
     for (let num of array)
         suma += num;
-    
     return suma / array.length;
 }
 
@@ -21,7 +20,6 @@ function calcularFrecuencia(array) {
     let frecuencia = Array(100).fill(0);
     for (let num of array)
         frecuencia[num]++;
-    
     return frecuencia;
 }
 
@@ -47,9 +45,9 @@ function ordenarJS(array) {
 // 2. Crea una función que calcule el factorial de un número usando un bucle.
 function factorial(n) {
     let resultado = 1;
-    for (let i = 2; i <= n; i++) {
+    for (let i = 2; i <= n; i++)
         resultado *= i;
-    }
+    
     return resultado;
 }
 
@@ -67,9 +65,12 @@ function buscarOcurrencias(texto, palabra) {
 // 4. Programa FizzBuzz del 1 al 100.
 function fizzBuzz() {
     for (let i = 1; i <= 100; i++) {
-        if (i % 15 === 0) console.log("fizzbuzz");
-        else if (i % 3 === 0) console.log("fizz");
-        else if (i % 5 === 0) console.log("buzz");
+        if (i % 15 === 0)
+            console.log("fizzbuzz");
+        else if (i % 3 === 0)
+            console.log("fizz");
+        else if (i % 5 === 0)
+            console.log("buzz");
         else console.log(i);
     }
 }
@@ -87,9 +88,8 @@ function generarAcertijo() {
 function generarPassword(longitud) {
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
     let password = '';
-    for (let i = 0; i < longitud; i++) {
+    for (let i = 0; i < longitud; i++) 
         password += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-    }
     return password;
 }
 
@@ -106,9 +106,12 @@ function contarVocalesConsonantes(cadena) {
 // 8. Validación de formulario con nombre, correo y edad.
 function validarFormulario(nombre, correo, edad) {
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (nombre.length <= 3) return false;
-    if (edad < 0 || edad > 120) return false;
-    if (!emailRegex.test(correo)) return false;
+    if (nombre.length <= 3)
+        return false;
+    if (edad < 0 || edad > 120)
+        return false;
+    if (!emailRegex.test(correo))
+        return false;
     return true;
 }
 
@@ -119,9 +122,8 @@ function cifradoCesar(texto, desplazamiento) {
         if (letra.match(/[a-z]/i)) {
             let base = letra === letra.toUpperCase() ? 65 : 97;
             resultado += String.fromCharCode((letra.charCodeAt(0) - base + desplazamiento) % 26 + base);
-        } else {
+        } else
             resultado += letra;
-        }
     }
     return resultado;
 }
@@ -131,10 +133,7 @@ let segundos = 0;
 let intervalo;
 
 function comenzarCronometro() {
-    intervalo = setInterval(() => {
-        segundos++;
-        mostrarTiempo();
-    }, 1000);
+    intervalo = setInterval(() => {  segundos++;  mostrarTiempo(); }, 1000);
 }
 
 function pararCronometro() {
@@ -156,9 +155,8 @@ function mostrarTiempo() {
 // 11. Tabla de multiplicar según valor del desplegable.
 function tablaMultiplicar(numero) {
     let tabla = [];
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 10; i++)
         tabla.push(`${numero} x ${i} = ${numero * i}`);
-    }
     return tabla;
 }
 
