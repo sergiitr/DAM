@@ -1,3 +1,8 @@
+/**
+ * Ejercicio Puente
+ * @author Sergio Trillo Rodriguez
+ */
+
 import java.util.Random;
 
 /**
@@ -87,7 +92,6 @@ class Coche extends Thread {
 public class SimulacionPuente {
     public static void main(String[] args) {
         Puente puente = new Puente();
-
         int numCoches = 10;
         for (int i = 0; i < numCoches; i++)
             new Coche(puente).start();
